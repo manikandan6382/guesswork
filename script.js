@@ -1,18 +1,4 @@
-/**
- * Gushwork Assignment - script.js
- * Mangalam HDPE Pipes - Product Page
- *
- * Features:
- * 1. Sticky Header  - shows on scroll down past hero, hides on scroll up
- * 2. Main carousel  - product image slider with thumbnail sync
- * 3. Zoom preview   - hover zoom on thumbnails
- * 4. Applications carousel - full-width image card slider
- * 5. FAQ accordion  - expand/collapse questions
- * 6. Process tabs   - tab switching for manufacturing steps
- * 7. Mobile menu    - hamburger toggle
- */
 
-/* ── DOM REFERENCES ── */
 const stickyHeader     = document.getElementById('stickyHeader');
 const mainNav          = document.getElementById('mainNav');
 const heroSection      = document.getElementById('productHero');
@@ -21,13 +7,24 @@ const mobileMenu       = document.getElementById('mobileMenu');
 const heroTrack        = document.getElementById('heroTrack');
 const heroPrev         = document.getElementById('heroPrev');
 const heroNext         = document.getElementById('heroNext');
+const thumbnailsTrack  = document.getElementById('thumbnails');
 const thumbnails       = document.querySelectorAll('.thumbnail');
+const thumbnailsTrackWrap = thumbnailsTrack ? thumbnailsTrack.parentElement : null;
 const appCarousel      = document.getElementById('appCarousel');
 const appPrev          = document.getElementById('appPrev');
 const appNext          = document.getElementById('appNext');
 const faqItems         = document.querySelectorAll('.faq-item');
 const processTabs      = document.querySelectorAll('.process-tab');
 const processPanels    = document.querySelectorAll('.process-panel');
+const processImageTrack = document.getElementById('processImageTrack');
+const processImagePrev = document.getElementById('processImagePrev');
+const processImageNext = document.getElementById('processImageNext');
+const processMobileStep = document.getElementById('processMobileStep');
+const processMobileCountText = document.getElementById('processMobileCountText');
+const processMobilePrev = document.getElementById('processMobilePrev');
+const processMobileNext = document.getElementById('processMobileNext');
+const testimonialsTrack = document.getElementById('testimonialsTrack');
+const testimonialsTrackWrap = document.querySelector('.testimonials-track-wrap');
 
 /* ================================================
    1. STICKY HEADER
@@ -153,21 +150,30 @@ const appCount  = appCards.length;
 
 function getAppItemW() {
     if (!appCards[0]) return 0;
-    return appCards[0].offsetWidth + 20; /* 20 = gap */
+    const gap = parseFloat(window.getComputedStyle(appCarousel).gap) || 20;
+    return appCards[0].offsetWidth + gap;
 }
 
-function getAppVisible() {
-    const w = window.innerWidth;
-    if (w <= 480)  return 1;
-    if (w <= 800)  return 2;
-    if (w <= 1080) return 3;
-    return 4;
+function getAppMaxTranslate() {
+    if (!appCarousel || !appCarousel.parentElement) return 0;
+    const wrapStyles = window.getComputedStyle(appCarousel.parentElement);
+    const paddingLeft = parseFloat(wrapStyles.paddingLeft) || 0;
+    const paddingRight = parseFloat(wrapStyles.paddingRight) || 0;
+    const visibleWidth = appCarousel.parentElement.clientWidth - paddingLeft - paddingRight;
+
+    return Math.max(0, appCarousel.scrollWidth - visibleWidth);
 }
 
 function goToApp(index) {
-    const maxIndex = appCount - getAppVisible();
+    const itemWidth = getAppItemW();
+    const maxTranslate = getAppMaxTranslate();
+    const maxIndex = itemWidth ? Math.max(0, Math.ceil(maxTranslate / itemWidth)) : 0;
+
     appIndex = Math.max(0, Math.min(index, maxIndex));
-    appCarousel.style.transform = `translateX(-${appIndex * getAppItemW()}px)`;
+
+    const translateX = Math.min(appIndex * itemWidth, maxTranslate);
+    appCarousel.style.transform = `translateX(-${translateX}px)`;
+
     appPrev.disabled = appIndex === 0;
     appNext.disabled = appIndex >= maxIndex;
 }
@@ -192,11 +198,112 @@ window.addEventListener('resize', () => {
     resizeTimer = setTimeout(() => {
         appIndex = 0;
         goToApp(0);
+        syncTestimonialsEndSpace();
     }, 200);
 });
 
 /* Initialize */
 goToApp(0);
+
+
+/* ================================================
+   4A. PROCESS RAW MATERIAL IMAGE CAROUSEL
+================================================ */
+let processImageIndex = 0;
+const processImageSlides = processImageTrack ? processImageTrack.querySelectorAll('.process-image-carousel__slide') : [];
+const processImageCount = processImageSlides.length;
+
+function updateProcessImageButtons() {
+    if (!processImagePrev || !processImageNext) return;
+    processImagePrev.disabled = processImageIndex === 0;
+    processImageNext.disabled = processImageIndex === processImageCount - 1;
+}
+
+function goToProcessImage(index) {
+    if (!processImageTrack || !processImageCount) return;
+
+    processImageIndex = Math.max(0, Math.min(index, processImageCount - 1));
+    processImageTrack.style.transform = `translateX(-${processImageIndex * 100}%)`;
+    updateProcessImageButtons();
+}
+
+if (processImagePrev) {
+    processImagePrev.addEventListener('click', () => goToProcessImage(processImageIndex - 1));
+}
+
+if (processImageNext) {
+    processImageNext.addEventListener('click', () => goToProcessImage(processImageIndex + 1));
+}
+
+goToProcessImage(0);
+
+
+/* ================================================
+   4B. DRAG SCROLL
+================================================ */
+function enableDragScroll(element, draggingClass) {
+    if (!element) return;
+
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartScrollLeft = 0;
+    let touchStartX = 0;
+    let touchStartScrollLeft = 0;
+
+    const stopDragging = () => {
+        isDragging = false;
+        if (draggingClass) element.classList.remove(draggingClass);
+    };
+
+    element.addEventListener('mousedown', (event) => {
+        isDragging = true;
+        dragStartX = event.pageX;
+        dragStartScrollLeft = element.scrollLeft;
+        if (draggingClass) element.classList.add(draggingClass);
+    });
+
+    element.addEventListener('mousemove', (event) => {
+        if (!isDragging) return;
+        event.preventDefault();
+        const dragDistance = event.pageX - dragStartX;
+        element.scrollLeft = dragStartScrollLeft - dragDistance;
+    });
+
+    element.addEventListener('mouseleave', stopDragging);
+    element.addEventListener('mouseup', stopDragging);
+    window.addEventListener('mouseup', stopDragging);
+
+    element.addEventListener('touchstart', (event) => {
+        touchStartX = event.touches[0].pageX;
+        touchStartScrollLeft = element.scrollLeft;
+    }, { passive: true });
+
+    element.addEventListener('touchmove', (event) => {
+        const dragDistance = event.touches[0].pageX - touchStartX;
+        element.scrollLeft = touchStartScrollLeft - dragDistance;
+    }, { passive: true });
+}
+
+function syncTestimonialsEndSpace() {
+    if (!testimonialsTrack) return;
+
+    let endSpacer = testimonialsTrack.querySelector('.testimonials-end-space');
+
+    if (!endSpacer) {
+        endSpacer = document.createElement('div');
+        endSpacer.className = 'testimonials-end-space';
+        endSpacer.setAttribute('aria-hidden', 'true');
+        endSpacer.style.flex = '0 0 auto';
+        endSpacer.style.pointerEvents = 'none';
+        testimonialsTrack.appendChild(endSpacer);
+    }
+
+    endSpacer.style.width = window.innerWidth <= 480 ? '16px' : '56px';
+}
+
+syncTestimonialsEndSpace();
+enableDragScroll(testimonialsTrackWrap, 'is-dragging');
+enableDragScroll(thumbnailsTrackWrap, 'is-dragging');
 
 
 /* ================================================
@@ -210,39 +317,69 @@ faqItems.forEach(item => {
         /* Close all */
         faqItems.forEach(f => {
             f.classList.remove('open');
-            f.querySelector('.faq-icon').textContent = '∨';
         });
 
         /* Open clicked (unless it was already open) */
         if (!isOpen) {
             item.classList.add('open');
-            item.querySelector('.faq-icon').textContent = '∧';
         }
     });
 });
 
 /* Set first item icon */
 const firstFaqIcon = document.querySelector('.faq-item.open .faq-icon');
-if (firstFaqIcon) firstFaqIcon.textContent = '∧';
-
 
 /* ================================================
    6. MANUFACTURING PROCESS TABS
 ================================================ */
-processTabs.forEach(tab => {
+let activeProcessIndex = 0;
+
+function updateProcessUI(index) {
+    if (!processTabs.length || !processPanels.length) return;
+
+    activeProcessIndex = Math.max(0, Math.min(index, processTabs.length - 1));
+
+    processTabs.forEach((tab, tabIndex) => {
+        tab.classList.toggle('active', tabIndex === activeProcessIndex);
+    });
+
+    processPanels.forEach((panel, panelIndex) => {
+        panel.classList.toggle('active', panelIndex === activeProcessIndex);
+    });
+
+    const activeTab = processTabs[activeProcessIndex];
+    const activeLabel = activeTab ? activeTab.textContent.trim() : '';
+
+    if (processMobileStep) {
+        processMobileStep.textContent = `Step ${activeProcessIndex + 1}/${processTabs.length}: ${activeLabel}`;
+    }
+
+    if (processMobileCountText) {
+        processMobileCountText.textContent = `${activeProcessIndex + 1} / ${processTabs.length}`;
+    }
+
+    const isFirst = activeProcessIndex === 0;
+    const isLast = activeProcessIndex === processTabs.length - 1;
+
+    if (processMobilePrev) processMobilePrev.disabled = isFirst;
+    if (processMobileNext) processMobileNext.disabled = isLast;
+}
+
+processTabs.forEach((tab, tabIndex) => {
     tab.addEventListener('click', () => {
-        const tabIndex = tab.dataset.tab;
-
-        /* Update tab active state */
-        processTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        /* Show corresponding panel */
-        processPanels.forEach(p => p.classList.remove('active'));
-        const panel = document.getElementById(`tab-${tabIndex}`);
-        if (panel) panel.classList.add('active');
+        updateProcessUI(tabIndex);
     });
 });
+
+if (processMobilePrev) {
+    processMobilePrev.addEventListener('click', () => updateProcessUI(activeProcessIndex - 1));
+}
+
+if (processMobileNext) {
+    processMobileNext.addEventListener('click', () => updateProcessUI(activeProcessIndex + 1));
+}
+
+updateProcessUI(0);
 
 
 /* ================================================

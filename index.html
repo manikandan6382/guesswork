@@ -14,10 +14,9 @@
 </head>
 
 <body>
-    <!-- ================================================
-     STICKY HEADER (appears on scroll past first fold)
-     Shows: product thumbnail + title + price + CTA
-================================================ -->
+
+    <!-- STICKY HEADER (appears on scroll past first fold) -->
+
     <header class="sticky-header" id="stickyHeader">
         <div class="sticky-header__inner container">
             <div class="sticky-product">
@@ -75,109 +74,13 @@
                 <span>Two For One Twister</span>
             </nav>
 
-            <div class="product-hero__flex flex-wrap flex-lg-nowrap">
-                <!-- LEFT: Image Carousel -->
-                <div class="product-hero__gallery w-lg-50 w-100">
-                    <!-- Main image with arrows -->
-                    <div class="main-carousel">
-                        <button class="carousel-arrow carousel-arrow--prev" id="heroPrev" aria-label="Previous">
-                            <img src="images/left-arrow-circle.png" alt="previous" class="img-size-50" />
-                        </button>
-                        <div class="main-carousel__track-wrap">
-                            <div class="main-carousel__track" id="heroTrack">
-                                <div class="main-carousel__slide">
-                                    <img src="images/card-banner-1.jpg" alt="Product 1" />
-                                </div>
-                                <div class="main-carousel__slide">
-                                    <img src="images/card-banner-2.jpg" alt="Product 2" />
-                                </div>
-                                <div class="main-carousel__slide">
-                                    <img src="images/card-banner-1.jpg" alt="Product 3" />
-                                </div>
-                                <div class="main-carousel__slide">
-                                    <img src="images/card-banner-2.jpg" alt="Product 4" />
-                                </div>
-                                <div class="main-carousel__slide">
-                                    <img src="images/card-banner-1.jpg" alt="Product 5" />
-                                </div>
-                                <div class="main-carousel__slide">
-                                    <img src="images/card-banner-2.jpg" alt="Product 6" />
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-arrow carousel-arrow--next" id="heroNext" aria-label="Next">
-                            <img src="images/right-arrow-circle.png" alt="next" class="img-size-50" />
-                        </button>
-                    </div>
-
-                    <!-- Thumbnails -->
-                    <div class="d-flex scroll-hidden w-100 overflow-auto">
-                        <div class="thumbnails" id="thumbnails">
-                            <div class="thumbnail active">
-                                <img src="images/card-banner-1.jpg" alt="Thumb 1" />
-                            </div>
-                            <div class="thumbnail">
-                                <img src="images/card-banner-2.jpg" alt="Thumb 2" />
-                            </div>
-                            <div class="thumbnail">
-                                <img src="images/card-banner-1.jpg" alt="Thumb 3" />
-                            </div>
-                            <div class="thumbnail">
-                                <img src="images/card-banner-2.jpg" alt="Thumb 4" />
-                            </div>
-                            <div class="thumbnail">
-                                <img src="images/card-banner-1.jpg" alt="Thumb 5" />
-                            </div>
-                            <div class="thumbnail">
-                                <img src="images/card-banner-2.jpg" alt="Thumb 6" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RIGHT: Product Details -->
-                <div class="d-flex gap-6 flex-column pt-2">
-                    <!-- Certifications -->
-                    <div class="certifications d-flex gap-3 flex-wrap">
-                        <span class="cert-badge"><img src="images/BIS.png" alt="BIS Certified" class="cert-icon" />
-                            BIS Certified</span>
-                        <span class="cert-badge"><img src="images/ISO.png" alt="ISO Certified" class="cert-icon" />
-                            ISO Certified</span>
-                        <span class="cert-badge"><img src="images/CE.png" alt="CE Certified" class="cert-icon" />
-                            CE Certified</span>
-                    </div>
-
-                    <h1 class="product-title">
-                        Premium HDPE Pipes &amp; Coils for Modern Infrastructure
-                    </h1>
-
-                    <ul class="d-flex flex-column gap-3">
-                        <li class="text-black-2 d-flex gap-2 aligin-items-center">
-                            <img src="images/check.png" alt="check" class="check" />
-                            Leak-Proof Fusion Joints
-                        </li>
-                        <li class="text-black-2 d-flex gap-2 aligin-items-center">
-                            <img src="images/check.png" alt="check" class="check" />
-                            Chemical Resistance
-                        </li>
-                        <li class="text-black-2 d-flex gap-2 aligin-items-center">
-                            <img src="images/check.png" alt="check" class="check" /> 50+
-                            Year Service Life
-                        </li>
-                        <li class="text-black-2 d-flex gap-2 aligin-items-center">
-                            <img src="images/check.png" alt="check" class="check" />
-                            Flexible Installation
-                        </li>
-                        <li class="text-black-2 d-flex gap-2 aligin-items-center">
-                            <img src="images/check.png" alt="check" class="check" />
-                            Flexible Installation
-                        </li>
-                    </ul>
-
+            <div class="product-hero__flex flex-wrap-reverse flex-lg-nowrap">
+                <!-- mobile content -->
+                <div class="d-flex d-md-none flex-column gap-6 w-100">
                     <!-- Price Range -->
                     <div class="d-flex flex-column gap-2 price-box">
                         <p class="price-label">Price Range</p>
-                        <p class="price-value">&#8377;4,80,000 - 7,90,000</p>
+                        <p class="price-value">₹4,80,000 - 7,90,000</p>
                         <div class="price-badges">
                             <span class="price-badge">Shipping: 6-12 days</span>
                             <span class="price-badge">Returns: If returned within 7 days</span>
@@ -187,17 +90,144 @@
                                 Certified</span>
                         </div>
                     </div>
-
-                    <!-- CTAs -->
                     <div class="product-ctas">
                         <button class="btn-primary" onclick="openModal('quoteModal')">
                             Get Custom Quote
                         </button>
-                        <button class="align-items-center btn-outline d-flex gap-3">
+                        <button class="align-items-center btn-outline d-flex gap-3 justify-content-center">
                             View Technical Specs
-                            <img src="images/left-arrow.png" alt="Left Arrow" class="left-arrow" />
+                            <img src="images/left-arrow-chevron.png" alt="Left Arrow" class="left-arrow">
                         </button>
                     </div>
+                    <!-- CTAs -->
+                </div>
+
+                <!-- LEFT: Image Carousel -->
+                <div class="product-hero__gallery w-lg-50 w-100">
+                    <!-- Main image with arrows -->
+                    <div class="main-carousel">
+                        <button class="carousel-arrow carousel-arrow--prev" id="heroPrev" aria-label="Previous"
+                            disabled="">
+                            <img src="images/left-arrow-circle.png" alt="previous" class="img-size-50">
+                        </button>
+                        <div class="main-carousel__track-wrap">
+                            <div class="main-carousel__track" id="heroTrack">
+                                <div class="main-carousel__slide">
+                                    <img src="images/card-banner-1.jpg" alt="Product 1">
+                                </div>
+                                <div class="main-carousel__slide">
+                                    <img src="images/card-banner-2.jpg" alt="Product 2">
+                                </div>
+                                <div class="main-carousel__slide">
+                                    <img src="images/card-banner-1.jpg" alt="Product 3">
+                                </div>
+                                <div class="main-carousel__slide">
+                                    <img src="images/card-banner-2.jpg" alt="Product 4">
+                                </div>
+                                <div class="main-carousel__slide">
+                                    <img src="images/card-banner-1.jpg" alt="Product 5">
+                                </div>
+                                <div class="main-carousel__slide">
+                                    <img src="images/card-banner-2.jpg" alt="Product 6">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-arrow carousel-arrow--next" id="heroNext" aria-label="Next">
+                            <img src="images/right-arrow-circle.png" alt="next" class="img-size-50">
+                        </button>
+                    </div>
+
+                    <!-- Thumbnails -->
+                    <div class="d-flex scroll-hidden w-100 overflow-auto">
+                        <div class="thumbnails" id="thumbnails">
+                            <div class="thumbnail active">
+                                <img draggable="false" src="images/card-banner-1.jpg" alt="Thumb 1">
+                            </div>
+                            <div class="thumbnail">
+                                <img draggable="false" src="images/card-banner-2.jpg" alt="Thumb 2">
+                            </div>
+                            <div class="thumbnail">
+                                <img draggable="false" src="images/card-banner-1.jpg" alt="Thumb 3">
+                            </div>
+                            <div class="thumbnail">
+                                <img draggable="false" src="images/card-banner-2.jpg" alt="Thumb 4">
+                            </div>
+                            <div class="thumbnail">
+                                <img draggable="false" src="images/card-banner-1.jpg" alt="Thumb 5">
+                            </div>
+                            <div class="thumbnail">
+                                <img draggable="false" src="images/card-banner-2.jpg" alt="Thumb 6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Product Details -->
+                <div class="d-flex gap-6 flex-column pt-2">
+
+                    <div class="d-flex flex-column gap-6">
+                        <!-- Certifications -->
+                        <div class="certifications d-flex gap-3 flex-wrap">
+                            <span class="cert-badge"><img src="images/BIS.png" alt="BIS Certified" class="cert-icon">
+                                BIS Certified</span>
+                            <span class="cert-badge"><img src="images/ISO.png" alt="ISO Certified" class="cert-icon">
+                                ISO Certified</span>
+                            <span class="cert-badge"><img src="images/CE.png" alt="CE Certified" class="cert-icon">
+                                CE Certified</span>
+                        </div>
+                        <h1 class="product-title">
+                            Premium HDPE Pipes &amp; Coils for Modern Infrastructure
+                        </h1>
+                        <ul class="d-flex flex-column gap-3">
+                            <li class="text-black-2 d-flex gap-2 align-items-center">
+                                <img src="images/check.png" alt="check" class="check">
+                                Leak-Proof Fusion Joints
+                            </li>
+                            <li class="text-black-2 d-flex gap-2 align-items-center">
+                                <img src="images/check.png" alt="check" class="check">
+                                Chemical Resistance
+                            </li>
+                            <li class="text-black-2 d-flex gap-2 align-items-center">
+                                <img src="images/check.png" alt="check" class="check"> 50+
+                                Year Service Life
+                            </li>
+                            <li class="text-black-2 d-flex gap-2 align-items-center">
+                                <img src="images/check.png" alt="check" class="check">
+                                Flexible Installation
+                            </li>
+                            <li class="text-black-2 d-flex gap-2 align-items-center">
+                                <img src="images/check.png" alt="check" class="check">
+                                Flexible Installation
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="d-md-flex d-none flex-column gap-6">
+                        <!-- Price Range -->
+                        <div class="d-flex flex-column gap-2 price-box">
+                            <p class="price-label">Price Range</p>
+                            <p class="price-value">₹4,80,000 - 7,90,000</p>
+                            <div class="price-badges">
+                                <span class="price-badge">Shipping: 6-12 days</span>
+                                <span class="price-badge">Returns: If returned within 7 days</span>
+                            </div>
+                            <div class="d-flex mt-2">
+                                <span class="price-badge price-badge-gray">Certifications: ISO Certified, BIS
+                                    Certified</span>
+                            </div>
+                        </div>
+                        <div class="product-ctas">
+                            <button class="btn-primary" onclick="openModal('quoteModal')">
+                                Get Custom Quote
+                            </button>
+                            <button class="align-items-center btn-outline d-flex gap-3">
+                                View Technical Specs
+                                <img src="images/left-arrow-chevron.png" alt="Left Arrow" class="left-arrow">
+                            </button>
+                        </div>
+                        <!-- CTAs -->
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -376,7 +406,6 @@
                 <div class="faq-item open">
                     <button class="faq-question">
                         What is the purpose of a laser cutter for sheet metal?
-                        <img src="images/down-arrow-circle.png" alt="down arrow" class="faq-icon">
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -389,7 +418,6 @@
                 <div class="faq-item">
                     <button class="faq-question">
                         What are the benefits of using aluminum tubing in manufacturing?
-                        <img src="images/down-arrow-circle.png" alt="down arrow" class="faq-icon">
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -402,7 +430,6 @@
                 <div class="faq-item">
                     <button class="faq-question">
                         How is aluminum tubing produced?
-                        <img src="images/down-arrow-circle.png" alt="down arrow" class="faq-icon">
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -415,7 +442,6 @@
                 <div class="faq-item">
                     <button class="faq-question">
                         What are the common applications of aluminum tubing?
-                        <img src="images/down-arrow-circle.png" alt="down arrow" class="faq-icon">
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -428,7 +454,6 @@
                 <div class="faq-item">
                     <button class="faq-question">
                         Can aluminum tubing be customized?
-                        <img src="images/down-arrow-circle.png" alt="down arrow" class="faq-icon">
                     </button>
                     <div class="faq-answer">
                         <p>
@@ -487,8 +512,7 @@
         <div class="app-carousel-wrap">
             <div class="app-carousel" id="appCarousel">
                 <div class="app-card">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80"
-                        alt="Manufacturing" />
+                    <img src="images/card-banner-1.jpg" alt="Manufacturing" />
                     <div class="app-card__overlay">
                         <h3>Manufacturing</h3>
                         <p>
@@ -499,8 +523,7 @@
                     </div>
                 </div>
                 <div class="app-card">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80"
-                        alt="Fishnet Manufacturing" />
+                    <img src="images/card-banner-2.jpg" alt="Fishnet Manufacturing" />
                     <div class="app-card__overlay">
                         <h3>Fishnet Manufacturing</h3>
                         <p>
@@ -511,8 +534,7 @@
                     </div>
                 </div>
                 <div class="app-card">
-                    <img src="https://images.unsplash.com/photo-1565087855786-f8fc7f64b17e?w=400&q=80"
-                        alt="Fishnet Manufacturing" />
+                    <img src="images/card-banner-1.jpg" alt="Fishnet Manufacturing" />
                     <div class="app-card__overlay">
                         <h3>Fishnet Manufacturing</h3>
                         <p>
@@ -523,8 +545,7 @@
                     </div>
                 </div>
                 <div class="app-card">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80"
-                        alt="Fishnet Manufacturing" />
+                    <img src="images/card-banner-2.jpg" alt="Fishnet Manufacturing" />
                     <div class="app-card__overlay">
                         <h3>Fishnet Manufacturing</h3>
                         <p>
@@ -535,8 +556,7 @@
                     </div>
                 </div>
                 <div class="app-card">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80"
-                        alt="Fishnet Manufacturing" />
+                    <img src="images/card-banner-1.jpg" alt="Fishnet Manufacturing" />
                     <div class="app-card__overlay">
                         <h3>Fishnet Manufacturing</h3>
                         <p>
@@ -551,7 +571,7 @@
     </section>
 
     <!-- MANUFACTURING PROCESS TABS -->
-    <section class="pb-40x pb-lg-80x pb-md-60x process pt-40x pt-lg-80x pt-md-60x">
+    <section class="border-bottom pb-40x pb-lg-80x pb-md-60x process pt-40x pt-lg-80x pt-md-60x">
         <div class="container">
             <div class="align-items-center d-flex flex-column text-center">
                 <h2 class="section-title">Advanced HDPE Pipe Manufacturing Process</h2>
@@ -574,6 +594,9 @@
                     <button class="process-tab" data-tab="6">Cutting</button>
                     <button class="process-tab" data-tab="7">Packaging</button>
                 </div>
+                <div class="pb-40x process-mobile-header">
+                    <span class="process-mobile-step" id="processMobileStep">Step 1/8: Raw Material</span>
+                </div>
                 <div class="process-content">
                     <div class="process-panel active" id="tab-0">
                         <div class="process-panel__text">
@@ -581,20 +604,39 @@
                             <p>Vacuum sizing tanks ensure precise outer diameter while internal pressure maintains
                                 perfect roundness and wall thickness uniformity.</p>
                             <ul class="process-checklist">
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">PE100 grade material
                                 </li>
 
 
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Optimal molecular weight
                                     distribution
                                 </li>
                             </ul>
                         </div>
-                        <div class="process-panel__image">
-                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&amp;q=80"
-                                alt="Raw Material">
+                        <div class="process-panel__image process-image-carousel">
+                            <button class="process-image-carousel__arrow process-image-carousel__arrow--prev"
+                                id="processImagePrev" type="button" aria-label="Previous raw material image">
+                                <img src="images/left-arrow-circle.png" alt="previous" class="">
+                            </button>
+                            <div class="process-image-carousel__viewport">
+                                <div class="process-image-carousel__track" id="processImageTrack">
+                                    <div class="process-image-carousel__slide">
+                                        <img src="images/card-banner-1.jpg" alt="Raw Material 1">
+                                    </div>
+                                    <div class="process-image-carousel__slide">
+                                        <img src="images/card-banner-2.jpg" alt="Raw Material 2">
+                                    </div>
+                                    <div class="process-image-carousel__slide">
+                                        <img src="images/card-banner-1.jpg" alt="Raw Material 3">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="process-image-carousel__arrow process-image-carousel__arrow--next"
+                                id="processImageNext" type="button" aria-label="Next raw material image" disabled="">
+                                <img src="images/right-arrow-circle.png" alt="next" class="">
+                            </button>
                         </div>
                     </div>
                     <div class="process-panel" id="tab-1">
@@ -606,15 +648,15 @@
                                 throughout the entire length.
                             </p>
                             <ul class="process-checklist">
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Computer-controlled extrusion
                                     temperature
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Consistent wall thickness
                                     monitoring
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Real-time dimension
                                     verification
                                 </li>
@@ -622,8 +664,7 @@
                             </ul>
                         </div>
                         <div class="process-panel__image">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&amp;q=80"
-                                alt="Extrusion">
+                            <img src="images/card-banner-2.jpg" alt="Extrusion">
                         </div>
                     </div>
                     <div class="process-panel" id="tab-2">
@@ -634,22 +675,21 @@
                                 prevents internal stress while maintaining dimensional accuracy.
                             </p>
                             <ul class="process-checklist">
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Vacuum sizing for precise
                                     diameter
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Controlled water cooling
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Stress prevention technology
                                 </li>
 
                             </ul>
                         </div>
                         <div class="process-panel__image">
-                            <img src="https://images.unsplash.com/photo-1565087855786-f8fc7f64b17e?w=600&amp;q=80"
-                                alt="Cooling">
+                            <img src="images/card-banner-1.jpg" alt="Cooling">
                         </div>
                     </div>
                     <div class="process-panel" id="tab-3">
@@ -660,17 +700,16 @@
                                 specifications.
                             </p>
                             <ul class="process-checklist">
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Precision measurement
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Automated sizing control
                                 </li>
                             </ul>
                         </div>
                         <div class="process-panel__image">
-                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&amp;q=80"
-                                alt="Sizing">
+                            <img src="images/card-banner-2.jpg" alt="Sizing">
                         </div>
                     </div>
                     <div class="process-panel" id="tab-4">
@@ -681,17 +720,16 @@
                                 quality.
                             </p>
                             <ul class="process-checklist">
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Pressure testing
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Dimensional verification
                                 </li>
                             </ul>
                         </div>
                         <div class="process-panel__image">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&amp;q=80"
-                                alt="Quality Control">
+                            <img src="images/card-banner-1.jpg" alt="Quality Control">
                         </div>
                     </div>
                     <div class="process-panel" id="tab-5">
@@ -701,17 +739,16 @@
                                 Clear and permanent markings for traceability and compliance.
                             </p>
                             <ul class="process-checklist">
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">ISO standard marking
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Permanent ink system
                                 </li>
                             </ul>
                         </div>
                         <div class="process-panel__image">
-                            <img src="https://images.unsplash.com/photo-1565087855786-f8fc7f64b17e?w=600&amp;q=80"
-                                alt="Marking">
+                            <img src="images/card-banner-2.jpg" alt="Marking">
                         </div>
                     </div>
                     <div class="process-panel" id="tab-6">
@@ -722,17 +759,16 @@
                                 order.
                             </p>
                             <ul class="process-checklist">
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Automated length control
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Clean cut finish
                                 </li>
                             </ul>
                         </div>
                         <div class="process-panel__image">
-                            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&amp;q=80"
-                                alt="Cutting">
+                            <img src="images/card-banner-1.jpg" alt="Cutting">
                         </div>
                     </div>
                     <div class="process-panel" id="tab-7">
@@ -743,18 +779,27 @@
                                 storage.
                             </p>
                             <ul class="process-checklist">
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Protective packaging
                                 </li>
-                                <li class="text-black-2 d-flex gap-2 aligin-items-center">
+                                <li class="text-black-2 d-flex gap-2 align-items-center">
                                     <img src="images/check.png" alt="check" class="check">Export quality bundles
                                 </li>
                             </ul>
                         </div>
                         <div class="process-panel__image">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&amp;q=80"
-                                alt="Packaging">
+                            <img src="images/card-banner-2.jpg" alt="Packaging">
                         </div>
+                    </div>
+                </div>
+                <div class="process-mobile-footer pt-40x">
+
+                    <div class="process-mobile-nav">
+                        <button class="process-mobile-nav__btn" id="processMobilePrev" type="button" disabled=""><img
+                                src="images/left-arrow.png" alt="previous" class="object-fit-contain w-20x">Previous
+                        </button>
+                        <button class="process-mobile-nav__btn" id="processMobileNext" type="button">Next<img
+                                src="images/right-arrow.png" alt="next" class="object-fit-contain w-20x"></button>
                     </div>
                 </div>
             </div>
@@ -764,7 +809,7 @@
     </section>
 
     <!-- TESTIMONIALS -->
-    <section class="testimonials">
+    <section class="border-bottom pb-40x pb-lg-80x pb-md-60x pt-40x pt-lg-80x pt-md-60x testimonials">
         <div class="container">
             <div class="align-items-center d-flex flex-column text-center">
                 <h2 class="section-title">Trusted Performance. Proven Results.</h2>
@@ -846,17 +891,17 @@
         </div>
     </section>
 
-    <!-- ================================================
-     FOLD 9: PORTFOLIO GRID
-================================================ -->
-    <section class="portfolio fold">
+    <!-- PORTFOLIO GRID -->
+    <section class="border-bottom pb-40x pb-lg-80x pb-md-60x portfolio pt-40x pt-lg-80x pt-md-60x">
         <div class="container">
-            <h2 class="section-title">Complete Piping Solutions Portfolio</h2>
-            <p class="section-sub">
-                From innovative Two-For-One Twisters to specialized heat setting
-                machines, we deliver complete solutions for modern textile
-                manufacturing.
-            </p>
+            <div class="align-items-center d-flex flex-column text-center">
+                <h2 class="section-title">Complete Piping Solutions Portfolio</h2>
+                <p class="section-sub">
+                    From innovative Two-For-One Twisters to specialized heat setting
+                    machines, we deliver complete solutions for modern textile
+                    manufacturing.
+                </p>
+            </div>
             <div class="portfolio-grid">
                 <div class="portfolio-card">
                     <h3>HDPE Fittings &amp; Accessories</h3>
@@ -865,8 +910,7 @@
                         including elbows, tees, reducers, and couplers for seamless pipe
                         connections.
                     </p>
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=80"
-                        alt="HDPE Fittings" />
+                    <img src="images/card-banner-1.jpg" alt="HDPE Fittings" />
                     <button class="btn-learn-more">Learn More</button>
                 </div>
                 <div class="portfolio-card">
@@ -876,8 +920,7 @@
                         system performance, compliance with standards, and long-term
                         reliability.
                     </p>
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&q=80"
-                        alt="Installation Services" />
+                    <img src="images/card-banner-2.jpg" alt="Installation Services" />
                     <button class="btn-learn-more">Learn More</button>
                 </div>
                 <div class="portfolio-card">
@@ -887,8 +930,7 @@
                         underfloor heating, radiator connections, and hot water
                         applications.
                     </p>
-                    <img src="https://images.unsplash.com/photo-1565087855786-f8fc7f64b17e?w=400&q=80"
-                        alt="PE-RT Pipes" />
+                    <img src="images/card-banner-1.jpg" alt="PE-RT Pipes" />
                     <button class="btn-learn-more">Learn More</button>
                 </div>
             </div>
@@ -904,42 +946,47 @@
                         Talk to our experts for custom solutions and tailored guidance.
                     </p>
                 </div>
-                <button class="btn-expert">&#128222; Talk to an Expert</button>
+                <button class="btn-expert"><img src="images/mobile.png" alt="down arrow" class="object-fit-contain">
+                    Talk to an Expert</button>
             </div>
         </div>
     </section>
 
-    <!-- ================================================
-     FOLD 10: RESOURCES & DOWNLOADS
-================================================ -->
-    <section class="resources fold">
+    <!-- RESOURCES & DOWNLOADS -->
+
+    <section class="border-bottom pb-40x pb-lg-80x pb-md-60x pt-40x pt-lg-80x pt-md-60x resources">
         <div class="container">
-            <h2 class="section-title">Resources &amp; Downloads</h2>
-            <p class="section-sub">
-                Get all the technical documentation and resources you need to make
-                informed decisions about our HDPE piping solutions.
-            </p>
-            <div class="resources-list">
+            <div class="align-items-center d-flex flex-column text-center">
+                <h2 class="section-title">Resources &amp; Downloads</h2>
+                <p class="section-sub">
+                    Get all the technical documentation and resources you need to make
+                    informed decisions about our HDPE piping solutions.
+                </p>
+            </div>
+
+            <div class="pb-2 pt-2 resources-list">
                 <div class="resource-item">
                     <span>HDPE Pipe Installation Manual (PDF)</span>
-                    <a href="#" class="resource-download">Download PDF &#8595;</a>
+                    <a href="#" class="resource-download">Download PDF <img src="images/download.png" alt="down arrow"
+                            class="object-fit-contain pb-1 w-15x"></a>
                 </div>
                 <div class="resource-item">
                     <span>Maintenance &amp; Inspection Handbook (PDF)</span>
-                    <a href="#" class="resource-download">Download PDF &#8595;</a>
+                    <a href="#" class="resource-download">Download PDF <img src="images/download.png" alt="down arrow"
+                            class="object-fit-contain pb-1 w-15x"></a>
                 </div>
                 <div class="resource-item">
                     <span>Engineering Specifications Sheet (PDF)</span>
-                    <a href="#" class="resource-download">Download PDF &#8595;</a>
+                    <a href="#" class="resource-download">Download PDF <img src="images/download.png" alt="down arrow"
+                            class="object-fit-contain pb-1 w-15x"></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================================================
-     FOLD 11: CTA SECTION (Dark blue rounded box)
-================================================ -->
-    <section class="cta-section fold">
+    <!-- CTA SECTION (Dark blue rounded box) -->
+
+    <section class="cta-section pb-40x pb-lg-80x pb-md-60x pt-40x pt-lg-80x pt-md-60x">
         <div class="container">
             <div class="cta-box">
                 <div class="cta-box__text">
@@ -948,7 +995,7 @@
                         Get a personalized consultation and quote for machinery solutions
                         tailored to your specific production requirements.
                     </p>
-                    <hr class="cta-divider" />
+                    <hr class="cta-divider">
                     <p class="cta-contact">
                         For immediate assistance, feel free to give us a direct call at
                         <strong>+91-XXX-XXX-XXXX.</strong> You can also send us a quick
@@ -958,16 +1005,19 @@
                 </div>
                 <div class="cta-box__form">
                     <h3>Contact Us Today</h3>
-                    <input type="text" placeholder="Full Name" />
-                    <input type="text" placeholder="Company Name" />
-                    <input type="email" placeholder="Email Address" />
+                    <input type="text" placeholder="Full Name">
+                    <input type="text" placeholder="Company Name">
+                    <input type="email" placeholder="Email Address">
                     <div class="phone-input">
-                        <select>
-                            <option>+91</option>
-                            <option>+1</option>
-                            <option>+44</option>
-                        </select>
-                        <input type="tel" placeholder="7003026616" />
+                        <div class="form-select">
+                            <select>
+                                <option>+91</option>
+                                <option>+1</option>
+                                <option>+44</option>
+                            </select>
+                            <img src="images/down-arrow.png" alt="down arrow" class="form-select-arrow">
+                        </div>
+                        <input type="tel" placeholder="7003026616">
                     </div>
                     <button class="btn-quote">Request Custom Quote</button>
                 </div>
@@ -975,19 +1025,17 @@
         </div>
     </section>
 
-    <!-- ================================================
-     FOOTER
-================================================ -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <!-- Logo tagline box -->
             <div class="footer-brand-box">
                 <div class="footer-logo">
-                    <span class="logo-mangalam">MangaLam</span>
-                    <span class="logo-sub">HDPE | PIPES</span>
+
+                    <img src="images/logo.png" alt="Company Logo">
                 </div>
                 <p class="footer-tagline">
-                    <strong>Premium</strong>
+                    Premium
                     <span class="text-blue">HDPE Pipes &amp; Fittings Manufacturer</span>
                     in South India
                 </p>
@@ -1020,30 +1068,38 @@
                 <div class="footer-col">
                     <h4>Contact</h4>
                     <p>
-                        &#128205; 2126, Road No. 2, GIDC Sachin, Surat - 394 230 Gujarat,
+                        <img src="images/location.png" alt="location" class="object-fit-contain w-10x">2126, Road No. 2,
+                        GIDC Sachin, Surat - 394 230 Gujarat,
                         India
                     </p>
-                    <p>&#128222; +91-XXX-XXX-XXXX</p>
-                    <p>&#9993; info@meeraind.com</p>
-                    <p>&#127911; support@meeraind.com</p>
+                    <p class="align-items-center!"><img src="images/phone.png" alt="phone"
+                            class="object-fit-contain w-13x"> +91-XXX-XXX-XXXX</p>
+                    <p class="align-items-center!"><img src="images/email.png" alt="phone"
+                            class="object-fit-contain w-13x"> info@meeraind.com</p>
+                    <p class="align-items-center!"><img src="images/support.png" alt="support"
+                            class="object-fit-contain w-13x"> support@meeraind.com</p>
                     <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">in</a>
-                        <a href="#" aria-label="X">X</a>
-                        <a href="#" aria-label="Instagram">&#9678;</a>
+                        <a href="#" aria-label="LinkedIn">
+                            <img src="images/linkedin.png" alt="linkedin" class="object-fit-contain">
+                        </a>
+                        <a href="#" aria-label="X"><img src="images/x.png" alt="x" class="object-fit-contain"></a>
+                        <a href="#" aria-label="Instagram"><img src="images/instagram.png" alt="instagram"
+                                class="object-fit-contain"></a>
                     </div>
                 </div>
             </div>
 
             <!-- Copyright bar -->
-            <div class="footer-copyright">
-                <p>
-                    Copyright &copy; 2025 Meera Industries Limited | All Rights Reserved
-                </p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Sitemap</a>
-                </div>
+
+        </div>
+        <div class="footer-copyright">
+            <p>
+                Copyright © 2025 Meera Industries Limited | All Rights Reserved
+            </p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Sitemap</a>
             </div>
         </div>
     </footer>
@@ -1054,20 +1110,23 @@
             <div class="modal__header">
                 <h3>Request a call back</h3>
                 <button class="modal__close" onclick="closeModal('quoteModal')">
-                    &times;
+                    ×
                 </button>
             </div>
             <div class="modal__body">
-                <input type="text" placeholder="Full Name" class="modal-input" />
-                <input type="text" placeholder="Company Name" class="modal-input" />
-                <input type="email" placeholder="Email Address" class="modal-input" />
+                <input type="text" placeholder="Full Name" class="modal-input">
+                <input type="text" placeholder="Company Name" class="modal-input">
+                <input type="email" placeholder="Email Address" class="modal-input">
                 <div class="modal-phone">
-                    <select class="modal-select">
-                        <option>+91 &#8964;</option>
-                        <option>+1</option>
-                        <option>+44</option>
-                    </select>
-                    <input type="tel" placeholder="7003026616" class="modal-input modal-input--phone" />
+                    <div class="form-select">
+                        <select class="modal-select">
+                            <option>+91</option>
+                            <option>+1</option>
+                            <option>+44</option>
+                        </select>
+                        <img src="images/down-arrow.png" alt="down arrow" class="form-select-arrow">
+                    </div>
+                    <input type="tel" placeholder="7003026616" class="modal-input modal-input--phone">
                 </div>
             </div>
             <div class="modal__footer">
@@ -1086,7 +1145,7 @@
                 </button>
             </div>
             <div class="modal__body">
-                <label class="modal-label">Your Email <span style="color: #ef4444">*</span></label>
+                <label class="modal-label">Your Email <span>*</span></label>
                 <input type="email" placeholder="example@gmail.com" class="modal-input" />
                 <label class="modal-label">Your Contact <span style="color: #9ca3af">(Optional)</span></label>
                 <input type="tel" placeholder="+91-0000000000" class="modal-input" />
