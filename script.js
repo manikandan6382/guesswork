@@ -20,7 +20,6 @@ const processImageTrack = document.getElementById('processImageTrack');
 const processImagePrev = document.getElementById('processImagePrev');
 const processImageNext = document.getElementById('processImageNext');
 const processMobileStep = document.getElementById('processMobileStep');
-const processMobileCountText = document.getElementById('processMobileCountText');
 const processMobilePrev = document.getElementById('processMobilePrev');
 const processMobileNext = document.getElementById('processMobileNext');
 const testimonialsTrack = document.getElementById('testimonialsTrack');
@@ -71,6 +70,8 @@ window.addEventListener('scroll', () => {
 ================================================ */
 hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
     /* Animate hamburger → X */
     const bars = hamburger.querySelectorAll('span');
     if (isOpen) {
@@ -88,6 +89,8 @@ hamburger.addEventListener('click', () => {
 document.addEventListener('click', (e) => {
     if (!mainNav.contains(e.target) && mobileMenu.classList.contains('open')) {
         mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
         hamburger.querySelectorAll('span').forEach(b => {
             b.style.transform = '';
             b.style.opacity   = '';
@@ -146,7 +149,6 @@ updateHeroButtons();
 ================================================ */
 let appIndex    = 0;
 const appCards  = appCarousel.querySelectorAll('.app-card');
-const appCount  = appCards.length;
 
 function getAppItemW() {
     if (!appCards[0]) return 0;
@@ -317,17 +319,16 @@ faqItems.forEach(item => {
         /* Close all */
         faqItems.forEach(f => {
             f.classList.remove('open');
+            f.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         });
 
         /* Open clicked (unless it was already open) */
         if (!isOpen) {
             item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
         }
     });
 });
-
-/* Set first item icon */
-const firstFaqIcon = document.querySelector('.faq-item.open .faq-icon');
 
 /* ================================================
    6. MANUFACTURING PROCESS TABS
@@ -341,6 +342,7 @@ function updateProcessUI(index) {
 
     processTabs.forEach((tab, tabIndex) => {
         tab.classList.toggle('active', tabIndex === activeProcessIndex);
+        tab.setAttribute('aria-pressed', String(tabIndex === activeProcessIndex));
     });
 
     processPanels.forEach((panel, panelIndex) => {
@@ -352,10 +354,6 @@ function updateProcessUI(index) {
 
     if (processMobileStep) {
         processMobileStep.textContent = `Step ${activeProcessIndex + 1}/${processTabs.length}: ${activeLabel}`;
-    }
-
-    if (processMobileCountText) {
-        processMobileCountText.textContent = `${activeProcessIndex + 1} / ${processTabs.length}`;
     }
 
     const isFirst = activeProcessIndex === 0;
@@ -387,7 +385,10 @@ updateProcessUI(0);
 ================================================ */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
-        const target = document.querySelector(link.getAttribute('href'));
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+
+        const target = document.querySelector(href);
         if (target) {
             e.preventDefault();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });

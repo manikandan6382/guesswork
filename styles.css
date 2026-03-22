@@ -492,6 +492,10 @@ body>* {
     max-width: 700px;
 }
 
+.max-w-80 {
+    max-width: 80%;
+}
+
 .text-center {
     text-align: center;
 }
@@ -836,21 +840,21 @@ h6 {
     padding-top: 40px;
     position: relative;
     isolation: isolate;
+}
 
-    &:after {
-        content: '';
-        background-image: url('images/bg-layer.png');
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-        height: 100%;
-        display: block;
-        max-width: 600px;
-        position: absolute;
-        right: 0;
-        top: -5%;
-        z-index: -1;
-    }
+.product-hero::after {
+    content: '';
+    background-image: url('images/bg-layer.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: block;
+    max-width: 600px;
+    position: absolute;
+    right: 0;
+    top: -5%;
+    z-index: -1;
 }
 
 /* Breadcrumb */
@@ -938,10 +942,11 @@ h6 {
     z-index: 10;
     transition: all var(--transition);
 
-    &:disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-    }
+}
+
+.carousel-arrow:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 .carousel-arrow--prev {
@@ -1293,16 +1298,17 @@ h6 {
     gap: 16px;
     position: relative;
 
-    &:after {
-        content: '';
-        background-image: url('images/down-arrow-circle.png');
-        width: 26px;
-        height: 26px;
-        position: absolute;
-        right: 20px;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
+}
+
+.faq-question::after {
+    content: '';
+    background-image: url('images/down-arrow-circle.png');
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .faq-question:hover {
@@ -1493,22 +1499,20 @@ h6 {
     }
 }
 
-.process-tab {
-    &:after {
-        content: '';
-        position: absolute;
-        height: 1px;
-        width: 100%;
-        top: 50%;
-        left: 100%;
-        color: #000;
-        z-index: -1;
-        border-bottom: 1px solid var(--border);
-    }
+.process-tab::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    left: 100%;
+    color: #000;
+    z-index: -1;
+    border-bottom: 1px solid var(--border);
+}
 
-    &:last-child:after {
-        content: unset;
-    }
+.process-tab:last-child::after {
+    content: unset;
 }
 
 .process-tab:hover {
@@ -1662,22 +1666,18 @@ h6 {
     gap: 16px;
     position: relative;
     isolation: isolate;
+}
 
-
-
-
-
-    &:after {
-        content: '';
-        position: absolute;
-        height: 1px;
-        width: 100%;
-        top: 50%;
-        left: 0;
-        color: #000;
-        z-index: -1;
-        border-bottom: 1px solid var(--border);
-    }
+.process-mobile-nav::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    color: #000;
+    z-index: -1;
+    border-bottom: 1px solid var(--border);
 }
 
 .process-mobile-nav__btn {
@@ -2763,14 +2763,22 @@ h6 {
 }
 
 @media (max-width:480px) {
+        .testimonial-body{
+            margin-bottom: 30px;
+    }
+    .testimonial-card{
+        padding:20px;
+    }
     .app-carousel-wrap {
         padding-left: 16px;
         padding-right: 16px;
     }
-    .carousel-arrow--round{
-        width:48px;
-        height:48px;
+
+    .carousel-arrow--round {
+        width: 48px;
+        height: 48px;
     }
+
     .btn-expert {
         justify-content: center;
         width: 100%;
